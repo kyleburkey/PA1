@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	//Initialize variables
+	int guess1, guess2, num, diff1, diff2;
+	
+	//Prompt user for guesses
+	cout << "Enter your first guess: ";
+	cin >> guess1;
+	
+	//Generate random integer
+	srand(time(NULL));
+	if(guess1 > 50)
+	{
+		num = ( rand() % (guess1*2) + 30 ); //arbitrary bounds for random int
+	}
+	else
+	{
+		num = ( rand() % 101 + 30 ); //30 being an arbitrary number
+	}
+	
+	//Check guess 1 before loop
+	if(guess1==num)
+	{
+		cout << "Correct! The number was " << num << "!" <<endl;
+		return 0;
+	}
+	
+	//Prompt user for second guess
+	cout << "Enter your next guess: ";
+	cin >> guess2;
+	
+	//Initiate guessing game
+	while(guess2!=num && guess1!=num)
+	{
+		diff1 = abs(guess1-num);
+		diff2 = abs(guess2-num);
+		if(diff2>diff1)
+		{
+			cout << "Colder" << endl;
+		}
+		else if(diff1>diff2)
+		{
+			cout << "Warmer" << endl;
+		}
+		else if(diff1==diff2)
+		{
+			cout << "No change" << endl;
+		}
+		guess1 = guess2;
+		cout << "Enter your next guess: ";
+		cin >> guess2;
+	}
+	
+	cout << "Correct! The number was " << num << "!" <<endl;
+}
