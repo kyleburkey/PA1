@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+#ifndef LIB_H
+#define LIB_H
+int dim(int s1, int s2, int s3);
+double areaTriangle(int s1, int s2, int s3);
+#endif
+using namespace std;
+
+int dim(int s1, int s2, int s3)
+{
+	if(s1<(s2+s3) && s2<(s1+s3) && s3<(s1+s2))
+	{
+		cout << "This triangle's area is " << areaTriangle(s1,s2,s3) << " square-units and its perimeter is " << (s1+ s2+ s3) << " units." << endl;
+
+	}
+	else
+	{
+		cout << "Dimensions " << s1 << ", " << s2 << ", " << s3 << " do not form a triangle." << endl;
+	}
+	return 0;
+}
+
+double areaTriangle(int s1, int s2, int s3)
+{
+	double s = (s1 + s2 + s3) / 2;
+	double a = sqrt(s*(s-s1)*(s-s2)*(s-s3));
+	return a;
+}
+
+int main()
+{
+	//Initialize variables
+	int s1=0;
+	int s2=0;
+	int s3=0;
+
+	//Prompt user for input variables
+	cout << "Enter the dimensions of the triangle: " << endl;
+	cout << "Side-1: ";
+	cin >> s1;
+	cout << "Side-2: ";
+	cin >> s2;
+	cout << "Side-3: ";
+	cin >> s3;
+
+	//Check triangle dimensions for validity & print results
+	dim(s1,s2,s3);
+
+}
