@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	//Initialize vars
+	char ch;
+	int offset;
+	char returnch;
+	
+	//Prompt user for a char
+	cout << "Enter character: ";
+	cin >> ch;
+	
+	//Prompt user for offset
+	cout << "Offset (enter 0 to convert case): ";
+	cin >> offset;
+	
+	//Calculate & display new ASCII value
+	if(offset==0)
+	{
+		if(isalpha(ch) && islower(ch))
+		{
+			returnch = toupper(ch);
+			cout << "New character: " << returnch <<endl;
+		}
+		else if(isalpha(ch) && isupper(ch))
+		{
+			returnch = tolower(ch);
+			cout << "New character: " << returnch <<endl;
+		}
+		else
+		{
+			returnch = ch;
+			cout << "New character: " << returnch <<endl;
+		}
+	}
+	else if(ch + offset > 127)
+	{
+		cout << "Error. Out of range." <<endl;
+	}
+	else
+	{
+		returnch = ch + offset;
+		cout << "New character: " << returnch <<endl;
+	}
+}
